@@ -18,10 +18,10 @@ Steps to accomplish
 4.  Is this a a good simulation?  Are there parameters missing?   Log enhancements in issues.
 5.  Are there bugs or things that don't work? Log bugs in issues.
 6.  Pick an issue to fix, do it, and make a [pull request](https://help.github.com/articles/creating-a-pull-request).
-7.  Consider a wait management product.  Do some research [online](http://www.google.com).  
-8.  In YOUR forked repo, start some issues that your team is going to solve.
+7.  Consider a wait management product.  Do some research [online](http://www.google.com).  start some issues to build the prototype for a solution.
+8.  In YOUR forked repo, [make a new branch](http://git-scm.com/book/en/Git-Branching-What-a-Branch-Is) for your solution.  
 9.  Implement the solution.
-10.  Make a pull request for the solution.
+10.  Make a pull request with your new solution.
 
 Your grade for the group will be the step you reach.
 
