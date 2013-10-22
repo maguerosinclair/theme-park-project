@@ -12,8 +12,8 @@ You are going to help me prototype some possible wait management solutions.
 Steps to accomplish
 -------------------
 
-1.  [Fork the repo](https://help.github.com/articles/fork-a-repo) with your group.
-2.  Clone to your machine, then read and test my code.  Follow the local setup instructions below.
+1.  [Fork the repo](https://help.github.com/articles/fork-a-repo) with your group. One person on your team should do this, and should add everybody else as collaborators.
+2.  Every member of the team should clone to your machine, then read and test my code.  Follow the local setup instructions below.
 3.  Do you have questions?  Ask a peer if you have questions, or post questions in issues in THIS repo.
 4.  Is this a a good simulation?  Are there parameters missing?   Log enhancements in issues.
 5.  Are there bugs or things that don't work? Log bugs in issues.
