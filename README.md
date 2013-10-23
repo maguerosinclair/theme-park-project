@@ -29,7 +29,7 @@ local setup instructions
 ------------------------
 clone the repo to your computer, then compile and run the Park class
 
-`git clone git@github.com:[USER]/theme-park-project.git`  
+`git clone git@github.com:CLONERUSERNAME/theme-park-project.git`  
 `cd theme-park-project`  
 `javac -cp jcommon-1.0.20.jar:jfreechart-1.0.16.jar *.java`  
 `java -cp jcommon-1.0.20.jar:jfreechart-1.0.16.jar:. Park`  
