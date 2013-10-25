@@ -34,3 +34,10 @@ clone the repo to your computer, then compile and run the Park class
 `javac -cp jcommon-1.0.20.jar:jfreechart-1.0.16.jar *.java`  
 `java -cp jcommon-1.0.20.jar:jfreechart-1.0.16.jar:. Park`  
 
+how to keep up to date
+----------------------
+keep your fork up to date with the original repository by adding a remote:
+`git remote add cforsterupstream git://github.com/cforster/theme-park-project.git`
+occasionally, you should pull upstream updates from my repository by saying
+`git pull cforsterupstream master`
+when you do this, your fork will get the most recent changes from my version. 
