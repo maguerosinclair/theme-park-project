@@ -25,7 +25,7 @@ public class Queue<T> {
 	}
 
 	public void resize() {
-		System.out.println("resize");
+		System.err.println("resize");
 		Queue<T> q2 = new Queue<T>(q.length*10);
 		while(this.size()>0) { q2.put(this.get());}
 		this.q = q2.q;
