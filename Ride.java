@@ -37,7 +37,11 @@ public class Ride {
 	public void tick() {
 		//move the riders through:
 		for (int i = 0; i < RIDERS; i++) {  
-			if(ride.size()>0) ride.get();   //.status[p.time] = RiderStatus.FREE; //free a rider
+		    if(ride.size()>0){
+		    Customer r =  ride.get();
+		    r.status[time] = RiderStatus.FREE; 
+		    }
+			//.status[p.time] = RiderStatus.FREE; //free a rider
 			if(line.size()>0) ride.put(line.get());  //move from line to ride.
 			else ride.put(null); //send an empty customer if necessary
 		}
