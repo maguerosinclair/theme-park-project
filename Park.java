@@ -43,7 +43,7 @@ public class Park {
 
 		//make the rides:
 		for (int i = 0; i < RIDECOUNT; i++) {
-			Ride r = new Ride(this);
+			Ride r = new Ride(maxtime);
 			r.APPEAL = 0.1+0.9*gen.nextDouble(); 
 			r.RIDELENGTH = gen.nextInt(4) + 2;
 			r.RIDERS = gen.nextInt(100) + 20;
@@ -53,7 +53,7 @@ public class Park {
 
 		//make the customers:
 		for (int i = 0; i < CUSTCOUNT; i++) {
-			Customer c = new Customer(this);
+			Customer c = new Customer(maxtime);
 			c.starttime = gen.nextInt(maxtime/2);
 			c.endtime = gen.nextInt(maxtime/2) + maxtime/2;
 			customers.add(c);
@@ -62,11 +62,11 @@ public class Park {
 		//run sim:
 		while (time < maxtime) {
 			for (Ride ride : rides) {
-				ride.tick();
+				ride.tick(time);
 			}
 
 			for (Customer customer : customers) {
-				customer.tick();
+			    customer.tick(time, rides);
 			}
 
 			time++;			
@@ -75,6 +75,11 @@ public class Park {
 		drawRideChart(rides);
 		drawAttendChart(customers);
 	}
+
+    public List<Ride> getRides()
+    {
+	return rides;
+    }
 	
 	public void drawAttendChart(List<Customer> custData) {
 		String title = "attendance chart";
