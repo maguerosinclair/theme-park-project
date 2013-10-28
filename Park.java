@@ -29,13 +29,36 @@ public class Park {
 	int time=0;
 	public List<Customer> customers;
 	public List<Ride> rides;
+    
 
+    public int dayCustCount()
+    {
+	//create random generator
+	Random generator = new Random();
+	
+	//int day have value from 1 to 7; 1 = Sunday, 7 = Saturday
+	int day = generator.nextInt(7) + 1;
+	
+	//if Friday, Saturday, or Sunday, CUSTCOUNT is between 8000 and 12000
+	if(day == 1 || day == 6 || day == 7) {
+	    int CUSTCOUNT = generator.nextInt(4000) + 8000;
+	    return CUSTCOUNT;
+	}
+	//other days CUSTCOUNT is between 4000 and 8000
+	else {
+	    int CUSTCOUNT = generator.nextInt(4000) + 4000;
+	    return CUSTCOUNT;
+	}
+    }
+
+    
+    
 	//main simulation:
 	public Park() {
 		//PARAMETERS:
 		maxtime= 12*60; //12 hours x 60 minutes
 		// number of rides and number of customers
-		int CUSTCOUNT = 10000;
+		int CUSTCOUNT = dayCustCount();
 		int RIDECOUNT = 10;
 		
 		//declarations:
