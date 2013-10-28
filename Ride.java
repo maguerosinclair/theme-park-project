@@ -37,7 +37,8 @@ public class Ride {
 		for (int i = 0; i < RIDERS; i++) {  
 		    if(ride.size()>0){
 		    Customer r =  ride.get();
-		    r.status[time] = RiderStatus.FREE; 
+		    if(r != null)
+			r.status[time] = RiderStatus.FREE; 
 		    }
 			//.status[p.time] = RiderStatus.FREE; //free a rider
 			if(line.size()>0) ride.put(line.get());  //move from line to ride.
