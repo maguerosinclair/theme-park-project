@@ -3,8 +3,20 @@ import java.util.Random;
 
 public class Customer {
 	//PARAMETERS:
-	double FREEFACTOR = 1.0;    //lower number, more likely to take a free tick
-	double WAITFACTOR = 1.0;     //lower number, more likely to pick a ride with a long wait
+    double FREEFACTOR = 1.0;    //lower number, more likely to take a free tick
+    double WAITFACTOR = 1.0;
+
+    public boolean getRandomBoolean() {
+	Random ranGen = new Random();
+	boolean isChild = ranGen.nextBoolean();   //random generator for boolean
+     if(isChild) {
+	 WAITFACTOR = 0.5;   //if the majority of customers are kids, the waitfactor will change so lines are longer because children and willing to wait longer
+     }
+     else {
+	 WAITFACTOR = 1.5; //if the majority of customers are not children, the lines are normal length 
+     }
+     return isChild;
+    }
 
 	//declarations:
 	RiderStatus[] status;
@@ -12,6 +24,7 @@ public class Customer {
 	public int starttime=0;
 	public int endtime=0;
 	Random gen = new Random();
+       
 
 	//constructor
 	public Customer(Park p) {
