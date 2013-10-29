@@ -31,6 +31,7 @@ public class Park {
 	public List<Ride> rides;
     
 
+    //Michael Enhancement
     public int dayCustCount()
     {
 	//create random generator
@@ -68,7 +69,7 @@ public class Park {
 
 		//make the rides:
 		for (int i = 0; i < RIDECOUNT; i++) {
-			Ride r = new Ride(this);
+			Ride r = new Ride(maxtime);
 			//make appeal dependent on ride length and number of riders
 			r.RIDELENGTH = gen.nextInt(4) + 2;
 			r.RIDERS = gen.nextInt(100) + 20;
