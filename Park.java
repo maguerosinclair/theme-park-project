@@ -45,8 +45,8 @@ public class Park {
 		rides = new ArrayList<Ride>();
 
 		//make the rides:
-		for (int i = 0; i < RIDECOUNT; i++) {
-			Ride r = new Ride(this);
+		for (int i = 0; i < rideCount; i++) {
+		    Ride r = new Ride(duration);
 			//make appeal dependent on ride length and number of riders
 			r.RIDELENGTH = gen.nextInt(4) + 2;
 			r.RIDERS = gen.nextInt(100) + 20;
