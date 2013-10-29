@@ -31,12 +31,13 @@ public class Park {
 	public List<Ride> rides;
 
 	//main simulation:
-	public Park() {
+    public Park()
+    {
+	this(10000, 10, 12*60);
+    }
+
+    public Park(int custCount, int rideCount, int duration) {
 		//PARAMETERS:
-		maxtime= 12*60; //12 hours x 60 minutes
-		// number of rides and number of customers
-		int CUSTCOUNT = 10000;
-		int RIDECOUNT = 10;
 		
 		//declarations:
 		Random gen = new Random();
@@ -44,8 +45,8 @@ public class Park {
 		rides = new ArrayList<Ride>();
 
 		//make the rides:
-		for (int i = 0; i < RIDECOUNT; i++) {
-			Ride r = new Ride(this);
+		for (int i = 0; i < rideCount; i++) {
+		    Ride r = new Ride(duration);
 			//make appeal dependent on ride length and number of riders
 			r.RIDELENGTH = gen.nextInt(4) + 2;
 			r.RIDERS = gen.nextInt(100) + 20;
@@ -55,15 +56,15 @@ public class Park {
 		}
 
 		//make the customers:
-		for (int i = 0; i < CUSTCOUNT; i++) {
-			Customer c = new Customer(maxtime);
-			c.starttime = gen.nextInt(maxtime/2);
-			c.endtime = gen.nextInt(maxtime/2) + maxtime/2;
+		for (int i = 0; i < custCount; i++) {
+			Customer c = new Customer(duration);
+			c.starttime = gen.nextInt(duration/2);
+			c.endtime = gen.nextInt(duration/2) + duration/2;
 			customers.add(c);
 		}
 
 		//run sim:
-		while (time < maxtime) {
+		while (time < duration) {
 			for (Ride ride : rides) {
 				ride.tick(time);
 			}
