@@ -15,11 +15,15 @@ import org.jfree.data.xy.XYSeriesCollection;
 /**
  * 
  * @author cforster
- *
- *
- *
  * time is always in minutes
  * 
+ */
+
+/*
+Rachel Kasdin
+Improvement: I am going to make a boolean that describes each customer. If the customer is a kid,
+they are willing to wait in line longer. If the customer is an adult, they leave the line quickly. 
+
  */
 
 public class Park {
@@ -27,7 +31,7 @@ public class Park {
 	//globals:
 	int maxtime;
 	int time=0;
-	public List<Customer> customers;
+        public List<Customer> customers;  
 	public List<Ride> rides;
     
 
@@ -66,6 +70,7 @@ public class Park {
 		Random gen = new Random();
 		customers = new ArrayList<Customer>();
 		rides = new ArrayList<Ride>();
+		
 
 		//make the rides:
 		for (int i = 0; i < RIDECOUNT; i++) {
@@ -83,8 +88,9 @@ public class Park {
 			Customer c = new Customer(maxtime);
 			c.starttime = gen.nextInt(maxtime/2);
 			c.endtime = gen.nextInt(maxtime/2) + maxtime/2;
-			customers.add(c);
-		}
+			customers.add(c);      
+	        }
+	      
 
 		//run sim:
 		while (time < maxtime) {
