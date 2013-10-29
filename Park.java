@@ -59,7 +59,12 @@ public class Park {
     
     
 	//main simulation:
-	public Park() {
+    public Park()
+    {
+	this(10000, 10, 12*60);
+    }
+
+    public Park(int custCount, int rideCount, int duration) {
 		//PARAMETERS:
 		maxtime= 12*60; //12 hours x 60 minutes
 		// number of rides and number of customers
