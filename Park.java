@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+//importing information to have chart
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -44,11 +45,12 @@ public class Park {
 		rides = new ArrayList<Ride>();
 
 		//make the rides:
-		for (int i = 0; i < rideCount; i++) {
-			Ride r = new Ride(duration);
-			r.APPEAL = 0.1+0.9*gen.nextDouble(); 
+		for (int i = 0; i < RIDECOUNT; i++) {
+			Ride r = new Ride(this);
+			//make appeal dependent on ride length and number of riders
 			r.RIDELENGTH = gen.nextInt(4) + 2;
 			r.RIDERS = gen.nextInt(100) + 20;
+			r.APPEAL = 1.0 - (((r.RIDERS/r.RIDELENGTH)-10)*.01);
 			r.init();
 			rides.add(r);
 		}

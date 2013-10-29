@@ -1,10 +1,6 @@
-
 @SuppressWarnings("unchecked")
 public class Queue<T> {
-	T[] q;
-	int front=0;
-	int back=0;
-
+	T[] q;	int front=0;int back=0;
 
 	public Queue(int length) {
 		q = (T[]) new Object[length];
@@ -31,9 +27,7 @@ public class Queue<T> {
 	public void resize() {
 		System.err.println("resize");
 		Queue<T> q2 = new Queue<T>(q.length*10);
-		while(this.size()>0) {
-			q2.put(this.get());
-		}
+		while(this.size()>0) { q2.put(this.get());}
 		this.q = q2.q;
 		this.front = q2.front;
 		this.back = q2.back;
@@ -41,10 +35,10 @@ public class Queue<T> {
 	
 	//test for queue:
 	public static void main(String[] args) {
-		Queue q = new Queue(10);
+		Queue<Integer> gordon = new Queue<Integer>(10);
 		for (int i = 0; i < 15; i++) {
-			System.out.println("size: " + q.size());
-			q.put(i);
+			System.out.println("size: " + gordon.size());
+			gordon.put(i);
 		}
 	}
 }
