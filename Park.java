@@ -155,4 +155,34 @@ public class Park {
 	public static void main(String[] args) {
 		new Park();
 	}
+     public int weatherCustCount()
+    {
+	//create random generator 
+	Random gen = new Random(); 
+	int ran = gen.nextInt(3);
+	boolean good_weather = true;
+	
+ 
+	//2/3 of the time, weather is good
+	if(ran==0 || ran==1)
+	    {
+		good_weather =true;
+		
+	    }
+	//1/3 of the time, weather is bad
+	else 
+	    {
+		good_weather=false;
+	    }
+
+	int weather_cust = gen.nextInt(1000) +2000; 
+
+	if(good_weather==false) 
+	    {
+		weather_cust = weather_cust*-1;
+	    }
+
+	    return weather_cust; 
+    }
+    
 }
