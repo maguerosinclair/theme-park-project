@@ -69,6 +69,7 @@ public class Park {
 		maxtime= 12*60; //12 hours x 60 minutes
 		// number of rides and number of customers
 		int CUSTCOUNT = dayCustCount();
+		int CUSTCOUNT = CUSTCOUNT + weather_cust;
 		int RIDECOUNT = 10;
 		
 		//declarations:
@@ -189,6 +190,7 @@ public class Park {
 	public static void main(String[] args) {
 		new Park();
 	}
+    //Sunaina's enhancement
      public int weatherCustCount()
     {
 	//create random generator 
