@@ -5,19 +5,18 @@ import java.util.List;
 public class Customer {
 	//PARAMETERS:
     double FREEFACTOR = 1.0;    //lower number, more likely to take a free tick
-    double WAITFACTOR = 1.0;
+    double WAITFACTOR = 1.0; 
 
-    public boolean getRandomBoolean() {
+    public void KidsOrAdults() {
 	Random ranGen = new Random();
 	boolean isChild = ranGen.nextBoolean();   //random generator for boolean
-     if(isChild) {
-	 WAITFACTOR = 0.5;   //if the majority of customers are kids, the waitfactor will change so lines are longer because children and willing to wait longer
+	if(isChild) {
+	    WAITFACTOR = 0.5;   //if the majority of customers are kids, the waitfactor will change so lines are longer because children and willing to wait longer
+	}
+	else {
+	    WAITFACTOR = 1.5; //if the majority of customers are not children, the lines are normal length 
+	}
      }
-     else {
-	 WAITFACTOR = 1.5; //if the majority of customers are not children, the lines are normal length 
-     }
-     return isChild;
-    }
 
 	//declarations:
 	RiderStatus[] status;
@@ -35,6 +34,8 @@ public class Customer {
 
     public void tick(int time, List<Ride> rides)
 	{
+	    KidsOrAdults(); 
+
 		// if the customer hasn't arrived yet, do nothing.
 		if(time<starttime || time>endtime)
 		{
