@@ -4,19 +4,18 @@ import java.util.Random;
 public class Customer {
 	//PARAMETERS:
     double FREEFACTOR = 1.0;    //lower number, more likely to take a free tick
-    double WAITFACTOR = 1.0;
+    double WAITFACTOR = 1.0; 
 
-    public boolean getRandomBoolean() {
+    public void KidsOrAdults() {
 	Random ranGen = new Random();
 	boolean isChild = ranGen.nextBoolean();   //random generator for boolean
-     if(isChild) {
-	 WAITFACTOR = 0.5;   //if the majority of customers are kids, the waitfactor will change so lines are longer because children and willing to wait longer
+	if(isChild) {
+	    WAITFACTOR = 0.5;   //if the majority of customers are kids, the waitfactor will change so lines are longer because children and willing to wait longer
+	}
+	else {
+	    WAITFACTOR = 1.5; //if the majority of customers are not children, the lines are normal length 
+	}
      }
-     else {
-	 WAITFACTOR = 1.5; //if the majority of customers are not children, the lines are normal length 
-     }
-     return isChild;
-    }
 
 	//declarations:
 	RiderStatus[] status;
@@ -36,6 +35,8 @@ public class Customer {
 
 	public void tick()
 	{
+	    KidsOrAdults(); 
+
 		// if the customer hasn't arrived yet, do nothing.
 		if(p.time<starttime || p.time>endtime)
 		{
@@ -46,7 +47,7 @@ public class Customer {
 		if(status[p.time]==RiderStatus.FREE) {			
 			//pick a ride:
 			for (int i = 0; i < 100*FREEFACTOR; i++) {  //try to get on a ride,
-														//then tick backoff.
+														//then tick backoff
 				Ride r = p.rides.get(gen.nextInt(p.rides.size()));
 				double threshold = r.APPEAL*Math.pow(r.waittime[p.time],-1.0*WAITFACTOR);
 				if(gen.nextDouble()<threshold) {
