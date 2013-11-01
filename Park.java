@@ -33,13 +33,43 @@ public class Park {
 	int time=0;
         public List<Customer> customers;  
 	public List<Ride> rides;
+    
 
+    //Michael Enhancement
+    public int dayCustCount()
+    {
+	//create random generator
+	Random generator = new Random();
+	
+	//int day have value from 1 to 7; 1 = Sunday, 7 = Saturday
+	int day = generator.nextInt(7) + 1;
+	
+	//if Friday, Saturday, or Sunday, CUSTCOUNT is between 8000 and 12000
+	if(day == 1 || day == 6 || day == 7) {
+	    int CUSTCOUNT = generator.nextInt(4000) + 8000;
+	    return CUSTCOUNT;
+	}
+	//other days CUSTCOUNT is between 4000 and 8000
+	else {
+	    int CUSTCOUNT = generator.nextInt(4000) + 4000;
+	    return CUSTCOUNT;
+	}
+    }
+
+    
+    
 	//main simulation:
-	public Park() {
+    public Park()
+    {
+	this(10000, 10, 12*60);
+    }
+
+    public Park(int custCount, int rideCount, int duration) {
 		//PARAMETERS:
 		maxtime= 12*60; //12 hours x 60 minutes
 		// number of rides and number of customers
-		int CUSTCOUNT = 10000;
+		int CUSTCOUNT = dayCustCount();
+		int CUSTCOUNT = CUSTCOUNT + weather_cust;
 		int RIDECOUNT = 10;
 		
 		//declarations:
@@ -50,7 +80,7 @@ public class Park {
 
 		//make the rides:
 		for (int i = 0; i < RIDECOUNT; i++) {
-			Ride r = new Ride(this);
+			Ride r = new Ride(maxtime);
 			//make appeal dependent on ride length and number of riders
 			r.RIDELENGTH = gen.nextInt(4) + 2;
 			r.RIDERS = gen.nextInt(100) + 20;
@@ -61,7 +91,7 @@ public class Park {
 
 		//make the customers:
 		for (int i = 0; i < CUSTCOUNT; i++) {
-			Customer c = new Customer(this);
+			Customer c = new Customer(maxtime);
 			c.starttime = gen.nextInt(maxtime/2);
 			c.endtime = gen.nextInt(maxtime/2) + maxtime/2;
 			customers.add(c);      
@@ -71,11 +101,11 @@ public class Park {
 		//run sim:
 		while (time < maxtime) {
 			for (Ride ride : rides) {
-				ride.tick();
+				ride.tick(time);
 			}
 
 			for (Customer customer : customers) {
-				customer.tick();
+			    customer.tick(time, rides);
 			}
 
 			time++;			
@@ -84,6 +114,11 @@ public class Park {
 		drawRideChart(rides);
 		drawAttendChart(customers);
 	}
+
+    public List<Ride> getRides()
+    {
+	return rides;
+    }
 	
 	public void drawAttendChart(List<Customer> custData) {
 		String title = "attendance chart";
@@ -155,4 +190,35 @@ public class Park {
 	public static void main(String[] args) {
 		new Park();
 	}
+    //Sunaina's enhancement
+     public int weatherCustCount()
+    {
+	//create random generator 
+	Random gen = new Random(); 
+	int ran = gen.nextInt(3);
+	boolean good_weather = true;
+	
+ 
+	//2/3 of the time, weather is good
+	if(ran==0 || ran==1)
+	    {
+		good_weather =true;
+		
+	    }
+	//1/3 of the time, weather is bad
+	else 
+	    {
+		good_weather=false;
+	    }
+
+	int weather_cust = gen.nextInt(1000) +2000; 
+
+	if(good_weather==false) 
+	    {
+		weather_cust = weather_cust*-1;
+	    }
+
+	    return weather_cust; 
+    }
+    
 }

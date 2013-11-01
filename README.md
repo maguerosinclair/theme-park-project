@@ -12,9 +12,9 @@ You are going to help me prototype some possible wait management solutions.
 Steps to accomplish
 -------------------
 
-1.  [Fork the repo](https://help.github.com/articles/fork-a-repo) with your group.
-2.  Clone to your machine, then read and test my code.  Follow the local setup instructions below.
-3.  Do you have questions?  Ask a peer if you have questions, or post questions in issues in THIS repo.
+1.  [Fork the repo](https://help.github.com/articles/fork-a-repo) with your group. One person on your team should do this, and should add everybody else as collaborators.
+2.  Every member of the team should clone to your machine, then read and test my code.  Follow the local setup instructions below.
+3.  Do you have questions?  Ask a peer if you have questions, or post questions in issues in the ORIGINAL REPO.
 4.  Is this a a good simulation?  Are there parameters missing?   Log enhancements in issues.
 5.  Are there bugs or things that don't work? Log bugs in issues.
 6.  Pick an issue to fix, do it, and make a [pull request](https://help.github.com/articles/creating-a-pull-request).
@@ -29,8 +29,15 @@ local setup instructions
 ------------------------
 clone the repo to your computer, then compile and run the Park class
 
-`git clone git@github.com:[USER]/theme-park-project.git`  
+`git clone git@github.com:CLONERUSERNAME/theme-park-project.git`  
 `cd theme-park-project`  
 `javac -cp jcommon-1.0.20.jar:jfreechart-1.0.16.jar *.java`  
 `java -cp jcommon-1.0.20.jar:jfreechart-1.0.16.jar:. Park`  
 
+how to keep up to date
+----------------------
+keep your fork up to date with the original repository by adding a remote:
+`git remote add cforsterupstream git://github.com/cforster/theme-park-project.git`
+occasionally, you should pull upstream updates from my repository by saying
+`git pull cforsterupstream master`
+when you do this, your fork will get the most recent changes from my version. 
