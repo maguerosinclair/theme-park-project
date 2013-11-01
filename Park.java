@@ -33,17 +33,23 @@ public class Park {
 	int time=0;
         public List<Customer> customers;  
 	public List<Ride> rides;
-    
+
+
+    //for Michael's Enhancement
+	//create random generator
+    public static Random generator = new Random();
+	//int day have value from 1 to 7; 1 = Sunday, 7 = Saturday
+	public static int day = generator.nextInt(7) + 1;
+
+
+    //for Sunaina's Enhancement
+    //establishes good_weather as true initially
+   public static boolean good_weather = true;
 
     //Michael Enhancement
     public int dayCustCount()
     {
-	//create random generator
-	Random generator = new Random();
-	
-	//int day have value from 1 to 7; 1 = Sunday, 7 = Saturday
-	int day = generator.nextInt(7) + 1;
-	
+		
 	//if Friday, Saturday, or Sunday, CUSTCOUNT is between 8000 and 12000
 	if(day == 1 || day == 6 || day == 7) {
 	    int CUSTCOUNT = generator.nextInt(4000) + 8000;
@@ -54,6 +60,37 @@ public class Park {
 	    int CUSTCOUNT = generator.nextInt(4000) + 4000;
 	    return CUSTCOUNT;
 	}
+    }
+ 
+
+ //Sunaina's enhancement
+     public int weatherCustCount()
+    {
+	//create random generator 
+	Random gen = new Random(); 
+	int ran = gen.nextInt(3);
+	
+ 
+	//2/3 of the time, weather is good
+	if(ran==0 || ran==1)
+	    {
+		good_weather =true;
+		
+	    }
+	//1/3 of the time, weather is bad
+	else 
+	    {
+		good_weather=false;
+	    }
+
+	int weather_cust = gen.nextInt(1000) +2000; 
+
+	if(good_weather==false) 
+	    {
+		weather_cust = weather_cust*-1;
+	    }
+
+	    return weather_cust; 
     }
 
     
@@ -68,8 +105,7 @@ public class Park {
 		//PARAMETERS:
 		maxtime= 12*60; //12 hours x 60 minutes
 		// number of rides and number of customers
-		int CUSTCOUNT = dayCustCount();
-		int CUSTCOUNT = CUSTCOUNT + weather_cust;
+		int CUSTCOUNT = dayCustCount() + weatherCustCount();
 		int RIDECOUNT = 10;
 		
 		//declarations:
@@ -189,36 +225,9 @@ public class Park {
 	}
 	public static void main(String[] args) {
 		new Park();
+		System.out.println("Day of the week is " + day);
+		    System.out.println("Good weather? " + good_weather);
 	}
-    //Sunaina's enhancement
-     public int weatherCustCount()
-    {
-	//create random generator 
-	Random gen = new Random(); 
-	int ran = gen.nextInt(3);
-	boolean good_weather = true;
-	
- 
-	//2/3 of the time, weather is good
-	if(ran==0 || ran==1)
-	    {
-		good_weather =true;
-		
-	    }
-	//1/3 of the time, weather is bad
-	else 
-	    {
-		good_weather=false;
-	    }
-
-	int weather_cust = gen.nextInt(1000) +2000; 
-
-	if(good_weather==false) 
-	    {
-		weather_cust = weather_cust*-1;
-	    }
-
-	    return weather_cust; 
-    }
+   
     
 }
